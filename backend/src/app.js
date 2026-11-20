@@ -18,10 +18,38 @@ app.set("trust proxy", 1);
 // Security HTTP headers
 app.use(helmet());
 
+// Allowed frontend origins
+const allowedOrigins = [
+  config.corsOrigin,
+  "https://frontend-psi-ten-94.vercel.app"
+];
+
+// Allow current and future Vercel deployments of this project
+const isAllowedVercelOrigin = (origin) => {
+  return (
+    /^https:\/\/frontend-[a-z0-9-]+-shubham-tiwaris-projects-43e4cb5c\.vercel\.app$/.test(origin)
+  );
+};
+
 // CORS configuration
 app.use(
   cors({
-    origin: config.corsOrigin,
+    origin: (origin, callback) => {
+      // Allow requests without an Origin header (e.g. server-to-server)
+      if (!origin) {
+        return callback(null, true);
+      }
+
+      if (
+        allowedOrigins.includes(origin) ||
+        isAllowedVercelOrigin(origin) ||
+        origin === "http://localhost:5173"
+      ) {
+        return callback(null, true);
+      }
+
+      return callback(new Error("Not allowed by CORS"));
+    },
     credentials: true,
     methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization"]
