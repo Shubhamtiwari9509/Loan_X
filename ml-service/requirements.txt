@@ -1,0 +1,16 @@
+# Core ML Inference Dependencies (Pinned for exact compatibility with creditwise_model.pkl)
+scikit-learn==1.7.2
+xgboost==3.4.1
+joblib==1.6.0
+pandas==3.1.1
+numpy==2.5.5
+
+# Web API & Server
+fastapi==0.165.0
+uvicorn[standard]==0.54.0
+pydantic==2.14.3
+python-dotenv==1.2.4
+
+# Testing
+pytest==9.2.0
+httpx==0.28.1

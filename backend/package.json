@@ -1,0 +1,39 @@
+{
+  "name": "loanx-backend",
+  "version": "1.0.0",
+  "description": "LoanX Node.js & Express REST API Backend",
+  "main": "src/server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "node --watch src/server.js",
+    "seed:admin": "node src/scripts/seedAdmin.js",
+    "test": "node --test tests/**/*.test.js"
+  },
+  "keywords": [
+    "loanx",
+    "express",
+    "mongoose",
+    "ml-integration"
+  ],
+  "author": "LoanX Team",
+  "license": "ISC",
+  "dependencies": {
+    "@huggingface/inference": "^4.13.33",
+    "axios": "^1.21.1",
+    "bcryptjs": "^3.0.3",
+    "cors": "^2.8.6",
+    "dotenv": "^18.0.10",
+    "express": "^5.3.0",
+    "express-rate-limit": "^8.7.5",
+    "groq-sdk": "^1.6.0",
+    "helmet": "^8.3.0",
+    "jsonwebtoken": "^9.0.3",
+    "mongoose": "^9.12.2",
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "mockingoose": "^3.0.0",
+    "supertest": "^7.3.2"
+  }
+}
