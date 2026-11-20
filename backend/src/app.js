@@ -1,3 +1,4 @@
+
 import cors from "cors";
 import express from "express";
 import helmet from "helmet";
@@ -10,6 +11,9 @@ import aiAdvisorRoutes from "./routes/aiAdvisorRoutes.js";
 import { checkMLHealth } from "./services/mlClient.js";
 
 export const app = express();
+
+// Trust Render reverse proxy
+app.set("trust proxy", 1);
 
 // Security HTTP headers
 app.use(helmet());
